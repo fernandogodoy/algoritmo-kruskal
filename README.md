@@ -5,7 +5,9 @@ Esta aplicação possui a implementação do Algoritmo de Kruskal para geração
 1) Como resultado da execução, terá a escrita no console onde é apresentado: 
 
  > Caminho 
+ 
  > Arestas Selecionadas
+ 
  > Custo total da árvore.
 
 2) Representação gráfica da Árvore Mínima.
