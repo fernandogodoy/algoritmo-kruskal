@@ -1,0 +1,10 @@
+Representação das florestas classificadas por peso, onde cada linha representada por "vertice de origem -> vertice destino = peso da aresta"
+d,e-50
+b,c-50
+a,b-55
+a,c-56
+c,e-58
+b,d-60
+a,e-75
+b,e-78
+a,d-80
