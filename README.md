@@ -18,4 +18,5 @@ A arvore mínima é gerada com base no arquivo: https://github.com/fernandogodoy
 Este arquivo deve conter representação das florestas, onde cada linha representa uma árvore contendo: 
  > Origem (,) Destino (-) Peso
 
+ > Ex: A,B-120
 
