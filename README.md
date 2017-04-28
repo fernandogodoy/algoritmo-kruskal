@@ -24,6 +24,6 @@ Este arquivo deve conter representação das florestas, onde cada linha represen
  > Ex: A,B-120
 
 <html>
-	<img src="" />
+	<img src="https://github.com/fernandogodoy/algoritmo-kruskal/blob/master/print.PNG"/>
 
 </html>
