@@ -1,10 +1,14 @@
-package br.com.kruskal;
+package br.com.kruskal.printer;
 
 import java.math.BigDecimal;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
+
+import br.com.kruskal.model.Aresta;
+import br.com.kruskal.model.Arvore;
+import br.com.kruskal.model.Vertice;
 
 /**
  * 
@@ -36,7 +40,9 @@ public class ConsolePrinter implements Printer {
 	}
 
 	public BigDecimal calcularPesoTotal(Arvore arvore) {
-		return arvore.getArestas().stream().map(aresta -> aresta.getPeso()).reduce(BigDecimal.ZERO, BigDecimal::add);
+		return arvore.getArestas().stream()
+					.map(aresta -> aresta.getPeso())
+					.reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
 
 }

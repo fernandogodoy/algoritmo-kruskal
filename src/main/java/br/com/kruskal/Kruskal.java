@@ -1,14 +1,14 @@
 package br.com.kruskal;
 
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.jgrapht.alg.util.UnionFind;
+
+import br.com.kruskal.model.Aresta;
+import br.com.kruskal.model.Arvore;
+import br.com.kruskal.model.Vertice;
+import br.com.kruskal.printer.ConsolePrinter;
+import br.com.kruskal.printer.JFramePrinter;
+import br.com.kruskal.printer.Printer;
+import br.com.kruskal.util.FileUtil;
 
 /**
  * 
@@ -17,7 +17,6 @@ import org.jgrapht.alg.util.UnionFind;
  */
 public class Kruskal {
 
-	private static final Pattern REGEX = Pattern.compile("(.*),(.*)-(.*)");
 	private Arvore arvoreMinima = new Arvore();
 
 	public static void main(String[] args) {
@@ -25,6 +24,21 @@ public class Kruskal {
 		kruskal.execute();
 		kruskal.printConsole();
 		kruskal.printJFrame();
+	}
+
+	public void execute() {
+		Arvore arvore = FileUtil.readFile();
+		UnionFind<Vertice> unionFind = new UnionFind<>(arvore.getVertices());
+		for (Aresta aresta : arvore.getOrdened()) {
+			if (isCiclo(unionFind, aresta)) {
+				arvoreMinima.add(aresta);
+			}
+		}
+	}
+
+	private boolean isCiclo(UnionFind<Vertice> unionFind, Aresta aresta) {
+		unionFind.union(aresta.getOrigem(), aresta.getDestino());
+		return unionFind.find(aresta.getOrigem()) == unionFind.find(aresta.getDestino());
 	}
 
 	private void printConsole() {
@@ -35,43 +49,6 @@ public class Kruskal {
 	private void printJFrame() {
 		Printer printer = new JFramePrinter(arvoreMinima);
 		printer.print();
-	}
-
-	public void execute() {
-		Arvore floresta = readFile();
-		UnionFind<Vertice> unionFind = new UnionFind<>(floresta.getVertices());
-		for (Aresta aresta : floresta.getOrdened()) {
-			unionFind.union(aresta.getOrigem(), aresta.getDestino());
-			if (unionFind.find(aresta.getOrigem()) == unionFind.find(aresta.getDestino())) {
-				arvoreMinima.add(aresta);
-			}
-		}
-	}
-
-	public Arvore readFile() {
-		Path path = getPath();
-		Arvore arvore = new Arvore();
-		try (Scanner scanner = new Scanner(path.toFile())) {
-			while (scanner.hasNext()) {
-				Matcher matcher = REGEX.matcher(scanner.next().trim());
-				if (matcher.find()) {
-					Aresta aresta = new Aresta(matcher.group(1), matcher.group(2), matcher.group(3));
-					arvore.add(aresta);
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return arvore;
-	}
-
-	private Path getPath() {
-		try {
-			return Paths.get(ClassLoader.getSystemResource("kruskal").toURI());
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public Arvore getArvore() {

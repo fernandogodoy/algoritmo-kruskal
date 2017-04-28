@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.kruskal.model.Arvore;
+import br.com.kruskal.util.FileUtil;
+
 public class KruskalTest {
 
 	Kruskal kruskal;
@@ -19,7 +22,7 @@ public class KruskalTest {
 
 	@Test
 	public void lerArquivoTest() throws Exception {
-		Arvore arvore = kruskal.readFile();
+		Arvore arvore = FileUtil.readFile();
 		assertNotNull(arvore);
 		assertEquals(9, arvore.getArestas().size());
 	}

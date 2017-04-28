@@ -1,4 +1,4 @@
-package br.com.kruskal;
+package br.com.kruskal.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +10,8 @@ public class Arvore {
 
 	private Set<Aresta> arestas = new HashSet<>();
 	private Set<Vertice> vertices = new HashSet<>();
+
+	private final List<Aresta> ordened = new ArrayList<>();
 
 	public final Set<Aresta> getArestas() {
 		return arestas;
@@ -26,14 +28,22 @@ public class Arvore {
 	}
 
 	public List<Aresta> getOrdened() {
-		List<Aresta> list = new ArrayList<>(arestas);
-		Collections.sort(list);
-		return list;
+		if (ordened.isEmpty()) {
+			toOrder();
+		}
+		return ordened;
 	}
 
 	@Override
 	public String toString() {
 		return "Arvore [" + arestas + "], size: " + arestas.size();
+	}
+
+	public Arvore toOrder() {
+		List<Aresta> list = new ArrayList<>(arestas);
+		Collections.sort(list);
+		this.ordened.addAll(list);
+		return this;
 	}
 
 }

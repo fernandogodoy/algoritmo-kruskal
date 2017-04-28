@@ -1,4 +1,4 @@
-package br.com.kruskal;
+package br.com.kruskal.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;

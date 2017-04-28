@@ -1,4 +1,4 @@
-package br.com.kruskal;
+package br.com.kruskal.printer;
 
 import java.awt.Dimension;
 
@@ -13,6 +13,10 @@ import org.jgrapht.graph.DefaultListenableGraph;
 
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
+
+import br.com.kruskal.model.Aresta;
+import br.com.kruskal.model.Arvore;
+import br.com.kruskal.model.Vertice;
 
 /**
  * 
