@@ -9,6 +9,9 @@ Esta aplicação possui a implementação do Algoritmo de Kruskal para geração
  > Arestas Selecionadas
  
  > Custo total da árvore.
+ 
+ > Ex: ([a, b, c, d, e], [(d,e), (b,c), (a,b), (c,e)]) Z = 213
+ 
 
 2) Representação gráfica da Árvore Mínima.
 
@@ -20,3 +23,7 @@ Este arquivo deve conter representação das florestas, onde cada linha represen
 
  > Ex: A,B-120
 
+<html>
+	<img src="" />
+
+</html>
