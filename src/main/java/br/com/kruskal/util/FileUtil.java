@@ -20,7 +20,7 @@ public class FileUtil {
 		Arvore arvore = new Arvore();
 		try (Scanner scanner = new Scanner(path.toFile())) {
 			while (scanner.hasNext()) {
-				Matcher matcher = REGEX.matcher(scanner.next().trim());
+				Matcher matcher = REGEX.matcher(scanner.nextLine().trim());
 				if (matcher.find()) {
 					Aresta aresta = new Aresta(matcher.group(1), matcher.group(2), matcher.group(3));
 					arvore.add(aresta);
